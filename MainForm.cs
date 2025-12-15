@@ -178,9 +178,8 @@ namespace PorThunderbirdUpd
                 await DownloadFileAsync($"https://download.mozilla.org/?product=thunderbird-{desktopUpdate.latestVersion}-SSL&os=win64&lang=en-US", desktopFile);
 
                 // 4️⃣ Extract stormhen-portable into thunderbird-portable
-                if (Directory.Exists(portableDir))
-                    Directory.Delete(portableDir, true);
-                Directory.CreateDirectory(portableDir);
+                if (!Directory.Exists(portableDir))
+                    Directory.CreateDirectory(portableDir);
 
                 await Run7zExtract(portableFile, portableDir);
 
@@ -336,3 +335,4 @@ namespace PorThunderbirdUpd
         }
     }
 }
+
